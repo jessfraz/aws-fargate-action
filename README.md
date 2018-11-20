@@ -30,6 +30,9 @@ action "fargate deploy" {
 > it needs to be created before running the action. That is the only
 > prerequisite.
 
+![demo1](demo1.png)
+![demo2](demo2.png)
+
 ### Tests
 
 The tests use [shellcheck](https://github.com/koalaman/shellcheck). You don't
