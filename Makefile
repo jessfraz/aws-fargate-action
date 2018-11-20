@@ -18,8 +18,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "count=$(COUNT)" \
 		-var "cpu=$(CPU)" \
 		-var "memory=$(MEMORY)" \
-		-var "bucket=$(BUCKET)" \
-		$(TERRAFORM_FLAGS)
+		-var "bucket=$(BUCKET)"
 
 .PHONY: aws-init
 aws-init:
@@ -45,7 +44,8 @@ aws-plan: aws-init ## Run terraform plan for Amazon.
 .PHONY: aws-apply
 aws-apply: aws-init ## Run terraform apply for Amazon.
 	@cd $(AWS_DIR) && terraform apply \
-		$(AWS_TERRAFORM_FLAGS)
+		$(AWS_TERRAFORM_FLAGS) \
+		$(TERRAFORM_FLAGS)
 
 .PHONY: aws-destroy
 aws-destroy: aws-init ## Run terraform destroy for Amazon.
