@@ -26,6 +26,10 @@ action "fargate deploy" {
 }
 ```
 
+> **NOTE:** The bucket above needs to be in the same region as `AWS_REGION` AND
+> it needs to be created before running the action. That is the only
+> prerequisite.
+
 ### Tests
 
 The tests use [shellcheck](https://github.com/koalaman/shellcheck). You don't
