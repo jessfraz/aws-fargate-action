@@ -6,6 +6,7 @@ PORT := ${PORT}
 COUNT := ${COUNT}
 CPU := ${CPU}
 MEMORY := ${MEMORY}
+BUCKET := ${BUCKET}
 
 AWS_DIR=$(CURDIR)/terraform/amazon
 TERRAFORM_FLAGS :=
@@ -17,6 +18,7 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "count=$(COUNT)" \
 		-var "cpu=$(CPU)" \
 		-var "memory=$(MEMORY)" \
+		-var "bucket=$(BUCKET)" \
 		$(TERRAFORM_FLAGS)
 
 .PHONY: aws-init
@@ -29,6 +31,7 @@ aws-init:
 	@:$(call check_defined, COUNT, Number of containers to run)
 	@:$(call check_defined, CPU, Fargate instance CPU units to provision (1 vCPU = 1024 CPU units))
 	@:$(call check_defined, MEMORY, Fargate instance memory to provision (in MiB))
+	@:$(call check_defined, BUCKET, s3 bucket name to store the terraform state)
 	@cd $(AWS_DIR) && terraform init \
 		$(AWS_TERRAFORM_FLAGS)
 

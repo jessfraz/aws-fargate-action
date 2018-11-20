@@ -20,6 +20,7 @@ action "fargate deploy" {
     COUNT = "2"
     CPU = "256"
     MEMORY = "512"
+    BUCKET = "aws-fargate-action"
   }
   secrets = ["GITHUB_TOKEN", "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 }
