@@ -33,6 +33,8 @@ aws-init:
 	@:$(call check_defined, MEMORY, Fargate instance memory to provision (in MiB))
 	@:$(call check_defined, BUCKET, s3 bucket name to store the terraform state)
 	@cd $(AWS_DIR) && terraform init \
+		-backend-config "bucket=$(BUCKET)" \
+		-backend-config "region=$(AWS_REGION)" \
 		$(AWS_TERRAFORM_FLAGS)
 
 .PHONY: aws-plan

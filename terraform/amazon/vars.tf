@@ -51,8 +51,6 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "${var.bucket}"
-
     encrypt = true
 
     # Path to write state to.
