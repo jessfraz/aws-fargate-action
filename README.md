@@ -22,7 +22,7 @@ action "fargate deploy" {
     MEMORY = "512"
     BUCKET = "aws-fargate-action"
   }
-  secrets = ["GITHUB_TOKEN", "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
+  secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 }
 ```
 
