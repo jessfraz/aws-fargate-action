@@ -9,4 +9,7 @@ fi
 
 echo "On branch ${GITHUB_REF}, deploying..."
 
+(
+cd /usr/src
 make aws-apply TERRAFORM_FLAGS=-auto-approve
+)
