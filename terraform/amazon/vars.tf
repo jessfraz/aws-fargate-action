@@ -25,7 +25,7 @@ variable "port" {
 
 variable "count" {
   description = "Number of docker containers to run"
-  default     = 2
+  default     = "2"
 }
 
 variable "cpu" {

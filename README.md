@@ -17,6 +17,9 @@ action "fargate deploy" {
     AWS_REGION = "us-west-2"
     IMAGE = "r.j3ss.co/party-clippy"
     PORT = "8080"
+    COUNT = "2"
+    CPU = "256"
+    MEMORY = "512"
   }
   secrets = ["GITHUB_TOKEN", "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 }

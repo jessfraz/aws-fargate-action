@@ -24,6 +24,9 @@ aws-init:
 	@:$(call check_defined, AWS_SECRET_ACCESS_KEY, Amazon Secret Access Key)
 	@:$(call check_defined, IMAGE, Docker image to run)
 	@:$(call check_defined, PORT, Port to expose)
+	@:$(call check_defined, COUNT, Number of containers to run)
+	@:$(call check_defined, CPU, Fargate instance CPU units to provision (1 vCPU = 1024 CPU units))
+	@:$(call check_defined, MEMORY, Fargate instance memory to provision (in MiB))
 	@cd $(AWS_DIR) && terraform init \
 		$(AWS_TERRAFORM_FLAGS)
 
