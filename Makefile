@@ -8,6 +8,7 @@ CPU := ${CPU}
 MEMORY := ${MEMORY}
 
 AWS_DIR=$(CURDIR)/terraform/amazon
+TERRAFORM_FLAGS :=
 AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "access_key=$(AWS_ACCESS_KEY_ID)" \
 		-var "secret_key=$(AWS_SECRET_ACCESS_KEY)" \
@@ -15,7 +16,8 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "port=$(PORT)" \
 		-var "count=$(COUNT)" \
 		-var "cpu=$(CPU)" \
-		-var "memory=$(MEMORY)"
+		-var "memory=$(MEMORY)" \
+		$(TERRAFORM_FLAGS)
 
 .PHONY: aws-init
 aws-init:
