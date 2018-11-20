@@ -115,13 +115,13 @@ resource "aws_security_group" "ecs_tasks" {
 
 ### Load balancer.
 resource "aws_alb" "main" {
-  name            = "ecs-chat"
+  name            = "github-actions-deploy"
   subnets         = ["${aws_subnet.public.*.id}"]
   security_groups = ["${aws_security_group.ecs_lb.id}"]
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "ecs-chat"
+  name        = "github-actions-deploy"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = "${aws_vpc.main.id}"
