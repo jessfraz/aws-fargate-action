@@ -7,4 +7,6 @@ if [[ "$GITHUB_REF" != "refs/heads/master" ]]; then
 	exit 0
 fi
 
+echo "On branch ${GITHUB_REF}, deploying..."
+
 make aws-apply TERRAFORM_FLAGS=-auto-approve
