@@ -6,6 +6,7 @@ LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="red"
 
 RUN apk add --no-cache \
+	git \
 	make
 
 COPY terraform /usr/src/terraform
