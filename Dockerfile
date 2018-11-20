@@ -5,6 +5,9 @@ LABEL "com.github.actions.description"="Deploy to AWS Fargate on push to the mas
 LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="red"
 
+RUN apk add --no-cache \
+	make
+
 COPY terraform /usr/src/terraform
 COPY Makefile /usr/src
 COPY deploy.sh /usr/local/bin/deploy
