@@ -30,8 +30,17 @@ action "fargate deploy" {
 > it needs to be created before running the action. That is the only
 > prerequisite.
 
+**The action will run...**
+
 ![demo1](demo1.png)
+
+**On success, it will output the URL...**
+
 ![demo2](demo2.png)
+
+**Go to that in your browser...**
+
+![demo3](demo3.png)
 
 ### Tests
 
