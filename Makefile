@@ -43,7 +43,7 @@ aws-init:
 
 .PHONY: terraform-validate
 terraform-validate: ## Validate terraform scripts.
-	@cd $(AWS_DIR) && terraform validate -check-variables=false . && echo "[OK] Terraform"
+	@cd $(AWS_DIR) && echo "$$(docker run --rm -it --entrypoint bash -w '/mnt' -v $$(pwd):/mnt r.j3ss.co/terraform -c 'terraform validate -check-variables=false . && echo [OK] terraform')"
 
 .PHONY: aws-plan
 aws-plan: aws-init ## Run terraform plan for Amazon.
