@@ -41,6 +41,10 @@ aws-init:
 		-backend-config "region=$(AWS_REGION)" \
 		$(AWS_TERRAFORM_FLAGS)
 
+.PHONY: terraform-validate
+terraform-validate: ## Validate terraform scripts.
+	@cd $(AWS_DIR) && terraform validate -check-variables=false . && echo "[OK] Terraform"
+
 .PHONY: aws-plan
 aws-plan: aws-init ## Run terraform plan for Amazon.
 	@cd $(AWS_DIR) && terraform plan \
@@ -80,7 +84,7 @@ update-terraform: ## Update terraform binary locally from the docker container.
 	@terraform version
 
 .PHONY: test
-test: shellcheck ## Runs the tests on the repository.
+test: terraform-validate shellcheck ## Runs the tests on the repository.
 
 # if this session isn't interactive, then we don't want to allocate a
 # TTY, which would fail, but if it is interactive, we do want to attach
