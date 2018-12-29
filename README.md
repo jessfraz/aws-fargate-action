@@ -8,8 +8,12 @@ A GitHub action to deploy to AWS Fargate on push to the master branch.
 
 <!-- toc -->
 
-<!-- tocstop -->
+- [Usage](#usage)
+- [Contributing](#contributing)
+  * [Running the tests](#running-the-tests)
+  * [Using the `Makefile`](#using-the-makefile)
 
+<!-- tocstop -->
 
 ## Usage
 
