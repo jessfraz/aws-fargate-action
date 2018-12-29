@@ -4,6 +4,14 @@
 
 A GitHub action to deploy to AWS Fargate on push to the master branch. 
 
+**Table of Contents**
+
+<!-- toc -->
+
+<!-- tocstop -->
+
+
+## Usage
 
 ```
 workflow "on push to master, deploy to aws fargate" {
@@ -42,7 +50,9 @@ action "fargate deploy" {
 
 ![demo3](demo3.png)
 
-### Tests
+## Contributing
+
+### Running the tests
 
 The tests use [shellcheck](https://github.com/koalaman/shellcheck). You don't
 need to install anything. They run in a container.
