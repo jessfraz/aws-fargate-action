@@ -1,10 +1,4 @@
-resource "aws_ecs_task_definition" "app" {
-  family                   = "app"
-  network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
-  cpu                      = "${var.cpu}"
-  memory                   = "${var.memory}"
-
+locals {
   container_definitions = <<DEFINITION
 [
   {
@@ -23,6 +17,16 @@ resource "aws_ecs_task_definition" "app" {
   }
 ]
 DEFINITION
+}
+
+resource "aws_ecs_task_definition" "app" {
+  family                   = "app"
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  cpu                      = "${var.cpu}"
+  memory                   = "${var.memory}"
+
+  container_definitions = "${local.container_definitions}"
 }
 
 resource "aws_ecs_service" "main" {
