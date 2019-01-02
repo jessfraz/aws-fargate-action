@@ -21,10 +21,6 @@ AWS_TERRAFORM_FLAGS = -var "region=$(AWS_REGION)" \
 		-var "memory=$(MEMORY)" \
 		-var "bucket=$(BUCKET)"
 
-.PHONY: help
-help:
-	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
-
 .PHONY: aws-init
 aws-init:
 	@:$(call check_defined, AWS_REGION, Amazon Region)
@@ -102,3 +98,6 @@ shellcheck: ## Runs the shellcheck tests on the scripts.
 		--workdir /usr/src \
 		r.j3ss.co/shellcheck ./test.sh
 
+.PHONY: help
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
